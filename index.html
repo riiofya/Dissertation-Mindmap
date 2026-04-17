@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dissertation journey — from fragmented interests to a research question</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg2: #f5f4f0;
+    --bg3: #eae9e5;
+    --text: #1a1a1a;
+    --text2: #6b6a65;
+    --text3: #9c9a92;
+    --border: rgba(0,0,0,0.10);
+    --border2: rgba(0,0,0,0.20);
+    --info-bg: #E6F1FB;
+    --info-text: #185FA5;
+    --success-bg: #EAF3DE;
+    --success-text: #3B6D11;
+    --warn-bg: #FAEEDA;
+    --warn-text: #854F0B;
+    --danger-bg: #FCEBEB;
+    --danger-text: #A32D2D;
+    --purple-bg: #EEEDFE;
+    --purple-text: #534AB7;
+    --teal-bg: #E1F5EE;
+    --teal-text: #0F6E56;
+    --coral-bg: #FAECE7;
+    --coral-text: #993C1D;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --bg2: #2c2c2a;
+      --bg3: #3d3d3a;
+      --text: #e8e6de;
+      --text2: #9c9a92;
+      --text3: #6b6a65;
+      --border: rgba(255,255,255,0.10);
+      --border2: rgba(255,255,255,0.18);
+      --info-bg: #042C53;
+      --info-text: #85B7EB;
+      --success-bg: #173404;
+      --success-text: #97C459;
+      --warn-bg: #412402;
+      --warn-text: #FAC775;
+      --danger-bg: #501313;
+      --danger-text: #F7C1C1;
+      --purple-bg: #26215C;
+      --purple-text: #AFA9EC;
+      --teal-bg: #04342C;
+      --teal-text: #5DCAA5;
+      --coral-bg: #4A1B0C;
+      --coral-text: #F0997B;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;padding:48px 24px 100px}
+  .container{max-width:740px;margin:0 auto}
+  h1{font-size:24px;font-weight:500;margin:0 0 4px}
+  .subtitle{font-size:14px;color:var(--text2);margin:0 0 36px;line-height:1.6}
+  h2{font-size:16px;font-weight:500;color:var(--text);margin:32px 0 16px;padding-top:16px;border-top:1px solid var(--border)}
+  .thread{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;margin:2px 2px 2px 0;border:1px solid;white-space:nowrap}
+  .t-gender{border-color:#ED93B1;color:#D4537E}.t-nationalism{border-color:#F09595;color:#E24B4A}.t-mobility{border-color:#85B7EB;color:#378ADD}.t-capitalism{border-color:#FAC775;color:#BA7517}.t-solidarity{border-color:#5DCAA5;color:#1D9E75}.t-power{border-color:#AFA9EC;color:#7F77DD}
+  @media(prefers-color-scheme:dark){.t-gender{border-color:#993556;color:#ED93B1}.t-nationalism{border-color:#791F1F;color:#F09595}.t-mobility{border-color:#0C447C;color:#85B7EB}.t-capitalism{border-color:#633806;color:#FAC775}.t-solidarity{border-color:#085041;color:#5DCAA5}.t-power{border-color:#3C3489;color:#AFA9EC}}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px;font-size:12px;color:var(--text2);align-items:center}
+  .legend-label{font-size:13px;color:var(--text);font-weight:500;margin-right:4px}
+  .legend-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .legend-item{display:flex;align-items:center;gap:4px}
+  .card{background:var(--bg2);border-radius:12px;padding:20px 24px;margin:16px 0;border:1px solid var(--border)}
+  .card-accent{border-left:4px solid;padding-left:20px}
+  .card-purple{border-left-color:var(--purple-text);background:var(--purple-bg)}
+  .card-teal{border-left-color:var(--teal-text);background:var(--teal-bg)}
+  .card-coral{border-left-color:var(--coral-text);background:var(--coral-bg)}
+  .card-info{border-left-color:var(--info-text);background:var(--info-bg)}
+  .card-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1px;margin:0 0 8px}
+  .card-label-purple{color:var(--purple-text)}.card-label-teal{color:var(--teal-text)}.card-label-coral{color:var(--coral-text)}.card-label-info{color:var(--info-text)}.card-label-warn{color:var(--warn-text)}.card-label-success{color:var(--success-text)}
+  .card p{font-size:13px;color:var(--text);line-height:1.7;margin:0 0 8px}
+  .card p:last-child{margin:0}
+  .card .muted{color:var(--text2)}
+  .kp{font-size:14px;font-weight:500;color:var(--text);line-height:1.7;margin:0 0 6px;font-style:italic}
+  .kp-source{font-size:12px;color:var(--text3);margin:0 0 12px}
+  .sep{border:none;border-top:1px solid var(--border);margin:28px 0}
+  .phase{margin:0;border-left:3px solid var(--border);padding:0 0 0 24px;position:relative}
+  .phase::before{content:'';position:absolute;left:-7px;top:16px;width:11px;height:11px;border-radius:50%;background:var(--border2);transition:all .2s}
+  .phase.active::before{background:var(--info-text);box-shadow:0 0 0 4px var(--info-bg)}
+  .phase.rejected::before{background:var(--text3);opacity:.5}
+  .phase-head{cursor:pointer;padding:12px 0;display:flex;align-items:baseline;gap:10px;user-select:none}
+  .phase-head:hover .phase-title{opacity:.7}
+  .phase-num{font-size:11px;color:var(--text3);min-width:18px;font-variant-numeric:tabular-nums}
+  .phase-title{font-size:15px;font-weight:500;color:var(--text);flex:1;transition:opacity .15s}
+  .phase-tag{font-size:11px;padding:2px 10px;border-radius:6px;display:inline-block;white-space:nowrap;font-weight:500}
+  .tag-kept{background:var(--info-bg);color:var(--info-text)}.tag-dropped{background:var(--bg2);color:var(--text3)}.tag-current{background:var(--success-bg);color:var(--success-text)}.tag-insight{background:var(--warn-bg);color:var(--warn-text)}
+  .phase-body{overflow:hidden;max-height:0;transition:max-height .4s ease,padding .4s ease;padding:0}
+  .phase-body.open{max-height:1200px;padding:0 0 16px}
+  .phase-content{font-size:13px;color:var(--text2);line-height:1.8}
+  .detail{margin:8px 0 0;padding:10px 14px;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:12px;line-height:1.7}
+  .detail strong{color:var(--text);font-weight:500}
+  .threads{margin-top:10px}
+  .arr-down{font-size:11px;color:var(--text3);padding:2px 0 2px 12px;letter-spacing:.5px;border-left:3px solid var(--border);margin:0;line-height:1.6}
+  .tension-grid{display:grid;grid-template-columns:1fr 40px 1fr;gap:0;margin:8px 0;align-items:center}
+  .tension-left,.tension-right{font-size:13px;padding:10px 14px;border-radius:8px;line-height:1.5}
+  .tension-left{background:var(--teal-bg);color:var(--teal-text);text-align:right;font-weight:500}
+  .tension-right{background:var(--coral-bg);color:var(--coral-text);font-weight:500}
+  .tension-vs{text-align:center;font-size:11px;color:var(--text3);font-weight:500}
+  .lit-item{font-size:12px;color:var(--text2);line-height:1.7;padding:6px 0;border-bottom:1px solid var(--border)}
+  .lit-item:last-child{border-bottom:none}
+  .lit-item strong{color:var(--text);font-weight:500}
+  .lit-cat{font-size:12px;font-weight:500;color:var(--text);margin:14px 0 6px}
+  .rq-box{background:var(--bg2);border-radius:12px;padding:24px 28px;margin:24px 0;border:2px solid var(--border2)}
+  .rq-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin:0 0 12px}
+  .rq-text{font-size:15px;font-weight:500;color:var(--text);line-height:1.7;margin:0 0 16px}
+  .rq-step{padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.7}
+  .rq-step:last-child{border-bottom:none}
+  .rq-step-num{font-size:11px;color:var(--text3);margin-right:6px}
+  .footer-note{font-size:12px;color:var(--text3);margin-top:32px;line-height:1.7}
+  .btn{font-size:12px;color:var(--info-text);cursor:pointer;border:1px solid var(--border);background:var(--bg);padding:4px 12px;border-radius:6px;font-family:var(--font)}
+  .btn:hover{background:var(--bg2)}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Dissertation journey</h1>
+<p class="subtitle">From fragmented interests to a research question: tracing the full thought process through brainstorming, exploring, narrowing, and landing.</p>
+
+<h2>Part 1 — Where it started</h2>
+
+<div class="card card-accent card-coral">
+  <div class="card-label card-label-coral">The problem with the original topic</div>
+  <p>The original dissertation proposed studying Home Office and Prime Ministerial discourse on securitization vs. humanitarianism in UK asylum governance (2015-2025) — tracing how gendered narratives of vulnerability, threat, and deservingness are mobilized to legitimize exclusion.</p>
+  <p class="muted">Three problems forced a change: (1) Home Office documents deliberately use depoliticised language that hides the hierarchies of deservingness. (2) A desire for future-oriented research rather than pure critique. (3) Compassion fatigue — the humanitarian sector crumbling, UNHCR offices closing during the 2025 internship, and the emotional weight of studying suffering daily.</p>
+</div>
+
+<div class="card card-accent card-teal">
+  <div class="card-label card-label-teal">The interests that survived — in your own words</div>
+  <p class="kp">"Reclaiming mobility as a right"</p>
+  <p class="kp">"Securitisation"</p>
+  <p class="kp">"The benefits and disadvantages of how corporate partnerships reshape humanitarian practice"</p>
+  <p class="kp">"Study the system itself as a site of negotiation between humanitarian principles and market/state logic"</p>
+  <p class="kp">"A system where who gets to move and how they're governed once displaced are both being reshaped by the same convergence of state security interests and corporate capital"</p>
+  <p class="kp">"The politics, the far right, nationalism, the ideas of the nation-state and how they define the community"</p>
+  <p class="kp-source">And beneath all of it: gender and feminism, race and postcolonialism, the desire for something constructive</p>
+</div>
+
+<h2>Part 2 — The six threads</h2>
+<p style="font-size:13px;color:var(--text2);margin:0 0 16px;line-height:1.7">These intellectual threads surfaced repeatedly across every topic explored. Some were present from the start; others emerged later. By the end, all six converged.</p>
+
+<div class="legend" style="margin:0 0 16px">
+  <span class="thread t-gender">gender</span>
+  <span class="thread t-nationalism">nationalism</span>
+  <span class="thread t-mobility">mobility</span>
+  <span class="thread t-capitalism">capitalism</span>
+  <span class="thread t-solidarity">solidarity</span>
+  <span class="thread t-power">power dynamics</span>
+</div>
+<div class="legend" style="margin:0 0 8px">
+  <span class="legend-label">Status:</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--info-text)"></span> still active</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--text3);opacity:.5"></span> explored, moved on</span>
+</div>
+
+<h2>Part 3 — The journey</h2>
+<button class="btn" onclick="toggleAll()">Expand / collapse all</button>
+
+<!-- PHASE 1 -->
+<div class="phase rejected" data-i="0">
+<div class="phase-head" onclick="toggle(0)"><span class="phase-num">01</span><span class="phase-title">Original topic: securitization vs. humanitarianism in UK asylum</span><span class="phase-tag tag-dropped">dropped</span></div>
+<div class="phase-body" id="b0"><div class="phase-content">
+Home Office discourse analysis on deservingness, gender, and race in asylum governance (2015-2025).
+<div class="detail"><strong>Why dropped:</strong> Depoliticised government language hides what you wanted to study. Media comparison felt overdone. Emotional toll unsustainable.</div>
+<div class="detail"><strong>What carried forward:</strong> Interest in how gender and race structure protection. The instinct that protection is "politically malleable and open to contestation." The desire to understand how narratives become policy.</div>
+<div class="threads"><span class="thread t-gender">gender</span> <span class="thread t-nationalism">nationalism</span> <span class="thread t-power">power dynamics</span></div>
+</div></div></div>
+
+<div class="arr-down">&#8595; what stayed: gender, race, deservingness, political pressure, desire for constructive direction</div>
+
+<!-- PHASE 2 -->
+<div class="phase rejected" data-i="1">
+<div class="phase-head" onclick="toggle(1)"><span class="phase-num">02</span><span class="phase-title">Interests crystallized: capitalism, humanitarianism, mobility</span><span class="phase-tag tag-kept">kept</span></div>
+<div class="phase-body" id="b1"><div class="phase-content">
+Can capitalism and humanitarianism align? How do states negotiate frameworks under competing interests? Interest in mobility, sovereignty, arbitrary borders, nation-state mechanisms.
+<div class="detail"><strong>Key desire:</strong> Future-oriented research. Drawing on Andersson (2016). Exploring how governance can reduce harm while enhancing dignity. The role of social responsibility within capitalist societies. Partnership frameworks for mutual benefit.</div>
+<div class="detail"><strong>The gap:</strong> These were interests, not a researchable topic. Needed an empirical anchor.</div>
+<div class="threads"><span class="thread t-capitalism">capitalism</span> <span class="thread t-mobility">mobility</span> <span class="thread t-power">power dynamics</span></div>
+</div></div></div>
+
+<div class="arr-down">&#8595; searched for empirical anchors across three clusters</div>
+
+<!-- PHASE 3 -->
+<div class="phase rejected" data-i="2">
+<div class="phase-head" onclick="toggle(2)"><span class="phase-num">03</span><span class="phase-title">Explored: compacts, humanitarian tech, corporate partnerships</span><span class="phase-tag tag-dropped">passed</span></div>
+<div class="phase-body" id="b2"><div class="phase-content">
+<div class="detail"><strong>Cluster 1 — "Mutual benefit" compacts:</strong> Jordan Compact (2016), Ethiopia Jobs Compact, Kalobeyei settlement. Protection as economic development. Betts & Collier, Omata, Whyte, Crawley, Landau.</div>
+<div class="detail"><strong>Cluster 2 — Complementary pathways:</strong> Italy's humanitarian corridors, Canada's private sponsorship, ECOWAS Free Movement Protocol. Katy Long, Aleinikoff & Zamore, Achiume on migration as decolonization.</div>
+<div class="detail"><strong>Cluster 3 — Political economy of humanitarianism:</strong> WFP-Palantir ($45M partnership, data ethics, surveillance), Coppi/Access Now (220+ companies, 50+ partnerships), Mastercard-UNHCR digital infrastructure. Duffield, Barnett, Sandvik & Jacobsen, Egger, Henriksen.</div>
+<div class="detail"><strong>Why passed:</strong> Intellectually rich but the politics dimension was missing. They studied the system but not the political forces reshaping it.</div>
+<div class="threads"><span class="thread t-capitalism">capitalism</span> <span class="thread t-power">power dynamics</span> <span class="thread t-mobility">mobility</span></div>
+</div></div></div>
+
+<div class="arr-down">&#8595; decided to focus on a specific policy</div>
+
+<!-- PHASE 4 -->
+<div class="phase rejected" data-i="3">
+<div class="phase-head" onclick="toggle(3)"><span class="phase-num">04</span><span class="phase-title">Policy options tested: GCR, EU Pact, governance gap</span><span class="phase-tag tag-dropped">passed</span></div>
+<div class="phase-body" id="b3"><div class="phase-content">
+<div class="detail"><strong>Global Compact on Refugees (2018):</strong> Partnership approach, private sector pledges (only 95/814 implemented). Broadest canvas but risked scope creep.</div>
+<div class="detail"><strong>EU Pact on Migration and Asylum (2024):</strong> Securitization as management. "Control" replaced by "management" but restrictions persist. Humanitarian bordering. Paradigm shift in asylum law. Closest fit but risked returning to critique-of-suffering territory.</div>
+<div class="detail"><strong>Governance gap in humanitarian tech:</strong> Studying the absence of regulation around corporate-humanitarian partnerships. Most future-oriented but felt less like traditional policy analysis.</div>
+<div class="threads"><span class="thread t-capitalism">capitalism</span> <span class="thread t-mobility">mobility</span> <span class="thread t-power">power dynamics</span></div>
+</div></div></div>
+
+<div class="arr-down">&#8595; the missing piece: nationalism and far-right politics entered the frame</div>
+
+<!-- PHASE 5 -->
+<div class="phase active" data-i="4">
+<div class="phase-head" onclick="toggle(4)"><span class="phase-num">05</span><span class="phase-title">Breakthrough: the triangle of nationalism, capital, and humanitarianism</span><span class="phase-tag tag-insight">key turn</span></div>
+<div class="phase-body" id="b4"><div class="phase-content">
+The far right doesn't just oppose humanitarianism — it creates demand for the corporate infrastructure of border control. Three forces form a triangle:
+<div class="detail"><strong>Nationalism</strong> produces political demand for securitization (AfD, Vox, Reform UK, National Rally). Far-right discourse migrates into mainstream policy.<br><br><strong>Corporate capital</strong> supplies the infrastructure (Palantir, Frontex contractors, private detention, biometric systems, border tech).<br><br><strong>The humanitarian system</strong> is squeezed between, negotiating survival by adopting market logics.</div>
+<div class="detail"><strong>Why this was a breakthrough:</strong> Added the political energy missing from earlier options. The system isn't just broken by neglect — it's actively contested by political forces with competing visions of who belongs.</div>
+<div class="threads"><span class="thread t-nationalism">nationalism</span> <span class="thread t-capitalism">capitalism</span> <span class="thread t-power">power dynamics</span></div>
+</div></div></div>
+
+<div class="arr-down">&#8595; a talk on solidarity cities shifted toward constructive framing</div>
+
+<!-- PHASE 6 -->
+<div class="phase active" data-i="5">
+<div class="phase-head" onclick="toggle(5)"><span class="phase-num">06</span><span class="phase-title">Solidarity cities: alternatives being built from below</span><span class="phase-tag tag-kept">kept</span></div>
+<div class="phase-body" id="b5"><div class="phase-content">
+Pemberton et al. (2025, Cities journal): 700+ European cities supporting solidarity-based migration policies, resisting regressive national/EU policies. Moving Cities dataset of 28 city case studies.
+<div class="detail"><strong>Key themes:</strong> Empowerment of municipal actors. Collaborative cross-sector approaches. "Urban citizenship" challenging national sovereignty from below. Top-down, bottom-up, hybrid, and limited solidarity typologies (Bauder, Agustin & Jorgensen).</div>
+<div class="detail"><strong>Why this mattered:</strong> Shifted from "what's broken" to "what's being built." Felt energizing. But needed a sharper analytical question — description alone wouldn't suffice.</div>
+<div class="threads"><span class="thread t-solidarity">solidarity</span> <span class="thread t-mobility">mobility</span> <span class="thread t-power">power dynamics</span></div>
+</div></div></div>
+
+<div class="arr-down">&#8595; diagnostic questions pinpointed the intellectual centre of gravity</div>
+
+<div class="card card-accent card-purple">
+<div class="card-label card-label-purple">Diagnostic — what the preferences revealed</div>
+<p><strong>Scale:</strong> How international frameworks (UN, EU) get interpreted on the ground</p>
+<p><strong>Reading interest:</strong> All of the above — feminist solidarity, far-right contestation, policy pathways, cross-sector negotiation — because they're all dimensions of the same phenomenon</p>
+<p><strong>Contribution:</strong> Reveal power dynamics in something that seems progressive, with a constructive alternative as a concluding direction (not the main point)</p>
+</div>
+
+<div class="arr-down">&#8595; gender and feminism re-entered — not as an add-on but as a lens</div>
+
+<!-- PHASE 7 -->
+<div class="phase active" data-i="6">
+<div class="phase-head" onclick="toggle(6)"><span class="phase-num">07</span><span class="phase-title">Gender and feminism re-entered the frame</span><span class="phase-tag tag-insight">key turn</span></div>
+<div class="phase-body" id="b6"><div class="phase-content">
+FFP as a doorway: Sweden (adopted 2014, abandoned 2022), Germany (adopted 2023, abandoned 2025), Spain (active, under Vox pressure).
+<div class="detail"><strong>Key paper:</strong> "Feminist Foreign Policy Without Migration?" (Politics & Gender, 2025) — Germany's FFP excluded migration despite the Foreign Office leading on visa policy. Heinrich Boll Foundation on FFP as liberal paradox covering securitized borders.</div>
+<div class="detail"><strong>Pattern:</strong> FFP adopted by left-leaning governments as response to rising right-wing politics, then abandoned when the right gains power. Fragile because it doesn't address structural forces.</div>
+<div class="detail"><strong>Outcome:</strong> FFP too narrow as a topic (disappearing object), but the intersection it opened — feminist + migration + nationalism — held firm. FFP was a doorway, not the destination.</div>
+<div class="threads"><span class="thread t-gender">gender</span> <span class="thread t-nationalism">nationalism</span> <span class="thread t-power">power dynamics</span></div>
+</div></div></div>
+
+<div class="arr-down">&#8595; "which feminism?" — the question that sharpened everything</div>
+
+<!-- PHASE 8 -->
+<div class="phase active" data-i="7">
+<div class="phase-head" onclick="toggle(7)"><span class="phase-num">08</span><span class="phase-title">The critical question: which feminism structures governance?</span><span class="phase-tag tag-insight">key turn</span></div>
+<div class="phase-body" id="b7"><div class="phase-content">
+Feminism isn't one thing. The version adopted determines what's visible — and who gets protection.
+<div class="detail"><strong>Liberal feminism:</strong> "Add women and stir." Gender-sensitive asylum guidance, vulnerability categories, procedural adjustments. Operates within the existing architecture without questioning its racial, colonial, or class-based structure. This is what governments mean by "feminist" credentials on migration.</div>
+<div class="detail"><strong>Nationalist feminism:</strong> Weaponizing gender to justify exclusion. Migrant men as threats to "our" women. Sexual violence narratives legitimizing border closure. This is what far-right parties do with gender.</div>
+<div class="detail"><strong>Intersectional / decolonial feminism:</strong> The border regime itself is a feminist issue — structured by race, coloniality, class, citizenship (Achiume, Mohanty, Freedman, Krause, Crenshaw). The refugee definition historically protected the European intellectual man. Gendered human rights violations systemically under-recognised.</div>
+<div class="detail"><strong>The analytical engine:</strong> Liberal feminism can't counter nationalist feminism because it doesn't address race and coloniality. The contest isn't progressive vs. regressive — it's between fundamentally different feminisms. The version adopted has material consequences for who moves and who's protected.</div>
+<div class="threads"><span class="thread t-gender">gender</span> <span class="thread t-power">power dynamics</span> <span class="thread t-mobility">mobility</span></div>
+</div></div></div>
+
+<div class="arr-down">&#8595; case study: UK emerged as strongest practical and intellectual fit</div>
+
+<!-- PHASE 9 -->
+<div class="phase active" data-i="8">
+<div class="phase-head" onclick="toggle(8)"><span class="phase-num">09</span><span class="phase-title">Case: UK — the privatised dispersal system as gendered implementation gap</span><span class="phase-tag tag-current">current landing</span></div>
+<div class="phase-body" id="b8"><div class="phase-content">
+The UK asylum system is privatised, geographical, and gendered — and these three dimensions interact in ways that have barely been studied together. The dispersal system is the site where all six threads converge.
+<div class="detail"><strong>The implementation gap:</strong> The UK claims gender-sensitive asylum governance (Home Office Gender Issues guidance, Istanbul Convention, CEDAW). But women fleeing gender-based violence are placed on a no-choice basis by private contractors into accommodation that may be far from specialist legal services, women's organisations, and trauma-informed support. The gap between commitment and outcome is literal and measurable.</div>
+<div class="detail"><strong>The privatised partnership chain:</strong> Three corporations — Serco, Mears, and Clearsprings Ready Homes — run the entire asylum accommodation system under AASC contracts worth billions. Clearsprings' contract value grew tenfold (£0.7bn to £7bn) since 2019. Hotels are more profitable than dispersal housing. The state outsources gender-sensitive obligations to companies whose profit incentives undermine those obligations. Below these sit subcontractors, private landlords, and hotel operators — each adding a layer of distance from the stated commitments.</div>
+<div class="detail"><strong>The missing partnerships:</strong> The contract architecture connects the Home Office to corporate providers but is systematically disconnected from feminist civil society (Women for Refugee Women, Sisters Not Strangers, Rights of Women, Southall Black Sisters, local rape crisis centres). The partnerships that exist serve market logic; the partnerships that would serve gendered protection don't exist in the formal system.</div>
+<div class="detail"><strong>The spatial dimension (GIS):</strong> Map where women asylum seekers are dispersed against where specialist gender-based violence services, legal aid providers, and women's organisations exist. The gap between placement and services is the implementation gap made geographically visible — and it's produced by the dispersal system's cost-driven logic.</div>
+<div class="detail"><strong>The political context:</strong> Reform UK's gendered threat narratives push Labour toward deterrence and cost reduction, making gender sensitivity a low political priority. The securitisation environment shapes the conditions under which the partnership chain operates.</div>
+<div class="detail"><strong>Not the undergrad:</strong> That asked how meso-level actors foster belonging (integration question, from below). This asks how a privatised governance system mediates the gap between gender-sensitive commitments and protection outcomes (implementation question, across scales, mixed methods with GIS).</div>
+<div class="detail"><strong>Practical advantages:</strong> Asylum support data by local authority (publicly available, disaggregable). AASC contract details through NAO and parliamentary reports. Legal aid provider locations mappable. Full English-language sources. Potential interviews in London. Existing knowledge base. Feasible in under four months.</div>
+<div class="threads"><span class="thread t-gender">gender</span> <span class="thread t-nationalism">nationalism</span> <span class="thread t-mobility">mobility</span> <span class="thread t-power">power dynamics</span> <span class="thread t-solidarity">solidarity</span> <span class="thread t-capitalism">capitalism</span></div>
+</div></div></div>
+
+<!-- CENTRE OF GRAVITY -->
+<h2>Part 4 — The intellectual centre of gravity</h2>
+<p style="font-size:13px;color:var(--text2);margin:0 0 16px;line-height:1.8">One dynamic recurred across every topic: the negotiation between progressive principles and hostile political realities. The actors shifted but the structure held.</p>
+
+<div class="tension-grid"><div class="tension-left">Humanitarianism</div><div class="tension-vs">vs.</div><div class="tension-right">Capitalism</div></div>
+<div class="tension-grid"><div class="tension-left">Solidarity cities</div><div class="tension-vs">vs.</div><div class="tension-right">National governments</div></div>
+<div class="tension-grid"><div class="tension-left">Feminist foreign policy</div><div class="tension-vs">vs.</div><div class="tension-right">The far right</div></div>
+<div class="tension-grid"><div class="tension-left">International frameworks</div><div class="tension-vs">vs.</div><div class="tension-right">Ground-level implementation</div></div>
+<div class="tension-grid"><div class="tension-left">Mobility as a right</div><div class="tension-vs">vs.</div><div class="tension-right">Securitized borders</div></div>
+<div class="tension-grid"><div class="tension-left">Intersectional feminism</div><div class="tension-vs">vs.</div><div class="tension-right">Liberal / nationalist feminisms</div></div>
+
+<p style="font-size:13px;color:var(--text2);margin:16px 0 0;line-height:1.8">The dissertation studies this negotiation through the lens of gender — asking how the UK's privatised asylum dispersal system mediates the gap between gender-sensitive commitments and protection outcomes, and what the spatial, political, and economic dynamics of this gap reveal.</p>
+
+<!-- RESEARCH QUESTION -->
+<h2>Part 5 — The emerging research question</h2>
+
+<div class="rq-box">
+<div class="rq-label">Research question</div>
+<p class="rq-text">How does the UK's privatised asylum dispersal system mediate the gap between gender-sensitive policy commitments and protection outcomes for women seeking asylum, and what do the spatial, political, and economic dynamics of this gap reveal about the limits of liberal feminist governance under conditions of securitisation?</p>
+<div>
+<div class="rq-step"><span class="rq-step-num">Layer 1:</span> <strong>The policy commitment</strong> (qualitative — policy analysis) — Map the UK's stated gender-sensitive framework: Home Office Gender Issues guidance, Istanbul Convention obligations, CEDAW commitments, AASC contract specifications for identifying vulnerable people. This is the "what the state says it does" layer.</div>
+<div class="rq-step"><span class="rq-step-num">Layer 2:</span> <strong>The implementation gap — spatially mapped</strong> (mixed methods — GIS) — The centrepiece. Map where women asylum seekers are dispersed against where specialist GBV legal services, women's asylum organisations, and legal aid providers are located. Which contractor operates in each region, and what are their obligations? The GIS analysis makes the gap literal, measurable, and geographically visible.</div>
+<div class="rq-step"><span class="rq-step-num">Layer 3:</span> <strong>The privatised partnership chain</strong> (qualitative — document analysis) — Analyse the AASC contract terms: what are Serco, Mears, and Clearsprings contractually required to do regarding gender? How do profit incentives (hotels more profitable than dispersal, no-choice placement, cost minimisation) shape outcomes? Why do partnerships with corporate providers exist but formal partnerships with feminist civil society organisations don't?</div>
+<div class="rq-step"><span class="rq-step-num">Layer 4:</span> <strong>The political context</strong> (qualitative — contextual framing) — Reform UK's gendered threat narratives, Labour's deterrence response, and the securitisation environment that makes gender-sensitivity a low priority. Not a standalone analysis — the political wind that explains why the system is structured the way it is.</div>
+<div class="rq-step"><span class="rq-step-num">Conclusion:</span> <strong>Constructive dimension</strong> — drawing on solidarity cities literature, intersectional migration scholarship, and examples of local authorities or NGOs that have built gender-responsive models from below, outline what genuinely feminist asylum governance would require.</div>
+</div>
+<div style="margin-top:14px">
+<span class="thread t-gender">gender</span> <span class="thread t-nationalism">nationalism</span> <span class="thread t-mobility">mobility</span> <span class="thread t-capitalism">capitalism</span> <span class="thread t-power">power dynamics</span> <span class="thread t-solidarity">solidarity</span>
+</div>
+</div>
+
+<!-- PARTNERSHIP CHAIN -->
+<h2>Part 5b — The partnership chain: how gender degrades through outsourcing</h2>
+<p style="font-size:13px;color:var(--text2);margin:0 0 16px;line-height:1.8">The UK asylum system is a chain of outsourced partnerships. At every link, the gender-sensitive commitment degrades because of how the partnership is structured.</p>
+
+<div class="card">
+<p><strong>Link 1: Home Office → Serco, Mears, Clearsprings</strong> (the mega-contracts)</p>
+<p class="muted">Three corporations deliver all asylum accommodation. Contracts worth billions (Clearsprings: £0.7bn → £7bn since 2019). Contract includes requirements to identify vulnerable people, but performance deductions amount to less than 1% of supplier revenue. No meaningful financial penalty for failing women.</p>
+</div>
+<div class="card">
+<p><strong>Link 2: Contractors → subcontractors and private landlords</strong></p>
+<p class="muted">The three primary contractors don't own most accommodation. They subcontract to private landlords, hotel chains, and local property managers. Each layer adds corporate distance between the woman and the Home Office's gender commitments. Who is responsible for her safety?</p>
+</div>
+<div class="card">
+<p><strong>Link 3: Home Office → Migrant Help</strong> (the AIRE contract)</p>
+<p class="muted">A national helpline and support service, independent of providers. Supposed to be the safety net where asylum seekers report problems. Does it function as intended for women with gender-specific concerns, or is it a procedural box-tick?</p>
+</div>
+<div class="card" style="border-left:3px solid var(--coral-text)">
+<p><strong>Link 4: The absent partnerships — what doesn't exist</strong></p>
+<p class="muted">No formal partnership mechanisms connect the dispersal system to specialist women's organisations (Women for Refugee Women, Rights of Women, Southall Black Sisters, local rape crisis centres). These organisations provide the gender-sensitive support that actually matters — but they operate outside the contract architecture, funded precariously, often unable to reach women dispersed far away. The partnerships that exist serve market logic; the partnerships that would serve gendered protection don't exist.</p>
+</div>
+<div class="card">
+<p><strong>Link 5: Local authorities → everyone</strong></p>
+<p class="muted">Councils aren't responsible for accommodation but bear the consequences. Some have built their own partnership models with local NGOs, health trusts, and community organisations to fill the gap the national system leaves. These vary enormously by geography, political orientation, and resources — and they're the solidarity-from-below examples for the constructive conclusion.</p>
+</div>
+
+<!-- LITERATURE -->
+<h2>Part 6 — Key literature across the journey</h2>
+
+<div class="lit-cat">Feminist migration governance and FFP</div>
+<div class="lit-item"><strong>"Feminist Foreign Policy Without Migration?"</strong> — Politics & Gender, Cambridge (2025)</div>
+<div class="lit-item"><strong>Bell & Wegner</strong> — "Feminist Foreign Policy as Governance Feminism" — International Studies Review 27(1), 2025</div>
+<div class="lit-item"><strong>Heinrich Boll Foundation</strong> — "Exposing the Liberal Paradox: FFP and European Migration Control" (2024)</div>
+<div class="lit-item"><strong>Petrozziello & Hennebry</strong> — "Making Migration Part of Canada's FFP Future" (2025)</div>
+<div class="lit-item"><strong>SWP Berlin</strong> — "Feminist Foreign and Development Policy in Practice" (2024)</div>
+
+<div class="lit-cat">UK asylum governance, privatisation, and accommodation</div>
+<div class="lit-item"><strong>Migration Observatory (Oxford)</strong> — "Asylum Accommodation in the UK" (2025). Dispersal geography, contractor performance, hotel reliance, regional shifts.</div>
+<div class="lit-item"><strong>National Audit Office</strong> — "The Home Office's Asylum Accommodation Contracts" (2025). Contract values, performance monitoring, cost structures.</div>
+<div class="lit-item"><strong>Home Affairs Select Committee</strong> — "The Home Office's Management of Asylum Accommodation" (2025). Parliamentary scrutiny of Serco, Mears, Clearsprings.</div>
+<div class="lit-item"><strong>Home Office</strong> — Gender Issues in the Asylum Claim guidance. The formal gender-sensitive framework to be analysed.</div>
+<div class="lit-item"><strong>Women for Refugee Women</strong> — Reports on women's experiences in the asylum system, detention, and accommodation.</div>
+<div class="lit-item"><strong>Sisters Not Strangers coalition</strong> — "Will You Hear Us?" and other reports on destitution and gender-based asylum claims.</div>
+
+<div class="lit-cat">Gender, asylum, and the humanitarian system</div>
+<div class="lit-item"><strong>Freedman</strong> — Gendered insecurities of refugee women; gender and asylum</div>
+<div class="lit-item"><strong>Krause</strong> — SGBV in displacement; humanitarian understandings of refugeehood</div>
+<div class="lit-item"><strong>Cleton & Bonjour</strong> — "Feminist Scholarship in Europe on the Politics of International Migration" (2022)</div>
+<div class="lit-item"><strong>Aradau</strong> — Trafficked women as "victims at risk" and "risky bodies" — humanitarian-security discourse intertwinement</div>
+
+<div class="lit-cat">Mobility, borders, and decolonial critique</div>
+<div class="lit-item"><strong>Achiume</strong> — "Migration as Decolonization" (2019); "Racial Borders" (2022); "Empire, Borders, and Refugee Responsibility Sharing" (2024)</div>
+<div class="lit-item"><strong>Whyte</strong> — The Morals of the Market (2019)</div>
+<div class="lit-item"><strong>Andersson</strong> — Illegality, Inc. (2014); No Go World (2019)</div>
+<div class="lit-item"><strong>Gammeltoft-Hansen & Sorensen</strong> — The Migration Industry (2013)</div>
+<div class="lit-item"><strong>Davitti</strong> — Accountability in Privatized Migration Control</div>
+
+<div class="lit-cat">Privatisation and corporate partnerships in migration governance</div>
+<div class="lit-item"><strong>Coppi / Access Now</strong> — Mapping Humanitarian Tech (2024). 220+ companies, 50+ partnerships, opacity.</div>
+<div class="lit-item"><strong>Egger</strong> — PPPs in humanitarian tech innovation (2024). Typology by power distribution.</div>
+<div class="lit-item"><strong>Henriksen</strong> — "Finding the Sweet Spot": cross-sector partnerships and the politics of alignment (2024).</div>
+<div class="lit-item"><strong>CIGI</strong> — "The Privatization of Migration Control" — how private companies set the migration control agenda.</div>
+<div class="lit-item"><strong>Open University / OU</strong> — Immigration detention privatisation research — "more detainees equals more profit."</div>
+
+<div class="lit-cat">Solidarity cities and urban alternatives</div>
+<div class="lit-item"><strong>Pemberton et al.</strong> — "Migrant and refugee solidarity in European cities" Cities (2025)</div>
+<div class="lit-item"><strong>Bauder</strong> — Urban solidarity cities and migrant solidarity beyond city limits (2020, 2021)</div>
+<div class="lit-item"><strong>Agustin & Jorgensen</strong> — Solidarity and the Refugee Crisis in Europe (2019)</div>
+
+<div class="lit-cat">Far-right politics and migration</div>
+<div class="lit-item"><strong>Mudde</strong> — Far-right politics and immigration in Europe</div>
+<div class="lit-item"><strong>Stepka</strong> — Securitization logics in the EU Pact (2023)</div>
+<div class="lit-item"><strong>Halikiopoulou</strong> — Far-right and migration politics after 2024 elections (2025)</div>
+
+<!-- NEXT STEPS -->
+<h2>Part 7 — Next steps</h2>
+<div class="card">
+<p><strong>1. Sit with the research question.</strong> Don't research yet. Notice what specific moment, document, or dataset makes you think "I want to understand that."</p>
+<p><strong>2. Read model papers.</strong> The Heinrich Boll piece "Exposing the Liberal Paradox" and the Politics & Gender "FFP Without Migration?" for analytical framing. The Migration Observatory "Asylum Accommodation in the UK" and the Home Affairs Committee report for empirical grounding.</p>
+<p><strong>3. Talk to your supervisor.</strong> With this document — the arc, the centre of gravity, the emerging question, and the mixed-methods design. Let them help scope it for four months. Key decision: how much weight on GIS vs. qualitative analysis.</p>
+<p><strong>4. Gather primary data.</strong> Home Office asylum support data by local authority (publicly available spreadsheets). AASC contract details from NAO and parliamentary reports. Home Office Gender Issues guidance. Location data for legal aid providers (Law Society), specialist women's services (Rights of Women directory), and women's asylum organisations.</p>
+<p><strong>5. Begin the GIS mapping.</strong> Even a preliminary map of dispersal locations vs. gender-specific services will show whether the spatial gap hypothesis holds — and will be a powerful visual for the dissertation and supervisor meeting.</p>
+<p><strong>6. Consider interviews.</strong> 2-4 semi-structured interviews in London could transform the dissertation: Women for Refugee Women (feminist civil society perspective), a legal aid solicitor working on gender-based asylum claims (implementation perspective), a local authority officer in a high-dispersal area (partnership perspective). Start reaching out early.</p>
+<p><strong>7. Scope the timeline.</strong> Under four months. Mixed methods: policy analysis (Layer 1) + GIS spatial analysis (Layer 2) + contract/document analysis (Layer 3) + contextual political analysis (Layer 4) + constructive conclusion (Layer 5). Interviews supplement but don't drive.</p>
+</div>
+
+<div class="card card-accent card-info">
+<div class="card-label card-label-info">Methodology summary</div>
+<p><strong>Mixed methods — qualitative core with quantitative/spatial supplement:</strong></p>
+<p class="muted">Policy analysis of Home Office gender guidance and AASC contract terms. GIS spatial analysis mapping dispersal geography against gender-specific services. Document analysis of parliamentary reports, NAO audits, and NGO evidence. Political context through Hansard and media analysis. Supplementary interviews (2-4) with practitioners. The GIS component adds originality and visual power without consuming the whole timeline.</p>
+</div>
+
+<p class="footer-note">Click any phase to expand/collapse. This document is a snapshot of thinking in progress — the research question may evolve. The consistent pattern: every time something was dropped, it wasn't because the intellectual content was wrong — it was because the emotional or practical fit wasn't there. The final landing combines all six threads through a single empirical spine: the UK's privatised asylum dispersal system as a site where gender-sensitive commitments meet market logic, nationalist politics, and geographical reality. Your instincts have been reliable. Trust them.</p>
+
+</div>
+<script>
+function toggle(i){document.getElementById('b'+i).classList.toggle('open')}
+var allOpen=false;
+function toggleAll(){allOpen=!allOpen;for(var i=0;i<=8;i++){var b=document.getElementById('b'+i);if(allOpen)b.classList.add('open');else b.classList.remove('open')}}
+document.querySelectorAll('.phase.active .phase-body').forEach(function(el){el.classList.add('open')});
+</script>
+</body>
+</html>
